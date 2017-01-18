@@ -1,0 +1,54 @@
+<FrameLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="fill_parent"
+    android:layout_height="fill_parent"
+    tools:context="potato.skyus.remotemediaplayer.PlayerActivity"
+    android:background="@android:color/background_dark">
+
+    <!-- The primary full-screen view. This can be replaced with whatever view
+         is needed to present your content, e.g. VideoView, SurfaceView,
+         TextureView, etc. -->
+    <VideoView
+        android:layout_width="wrap_content"
+        android:layout_height="fill_parent"
+        android:fillViewport="true"
+        android:id="@+id/player_videoView"
+        android:clickable="false"
+        android:focusableInTouchMode="false"
+        android:layout_gravity="center" />
+
+    <!-- This FrameLayout insets its children based on system windows using
+         android:fitsSystemWindows. -->
+    <FrameLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:layout_gravity="center_horizontal|top"
+        android:clickable="false"
+        android:nestedScrollingEnabled="false">
+
+        <LinearLayout
+            android:id="@+id/fullscreen_content_controls"
+            style="?metaButtonBarStyle"
+            android:layout_width="736dp"
+            android:layout_height="wrap_content"
+            android:layout_gravity="left|bottom|center_horizontal"
+            android:orientation="horizontal"
+            tools:ignore="UselessParent"
+            android:baselineAligned="false"
+            android:clickable="false">
+
+            <Space
+                android:layout_width="0dp"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+             <Space
+                android:layout_width="wrap_content"
+                android:layout_height="match_parent"
+                android:layout_weight="1" />
+
+        </LinearLayout>
+    </FrameLayout>
+
+</FrameLayout>

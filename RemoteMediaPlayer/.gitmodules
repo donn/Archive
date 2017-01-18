@@ -1,0 +1,6 @@
+[submodule "iOS/Alamofire"]
+	path = iOS/Alamofire
+	url = https://github.com/alamofire/Alamofire.git
+[submodule "iOS/AlamofireImage"]
+	path = iOS/AlamofireImage
+	url = https://github.com/alamofire/AlamofireImage.git

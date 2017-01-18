@@ -1,0 +1,37 @@
+{
+  "DVTSourceControlWorkspaceBlueprintPrimaryRemoteRepositoryKey" : "76AAD6C217641A0A6466A2872AD7741AE54B273D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyRepositoryLocationsKey" : {
+
+  },
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyStatesKey" : {
+    "76AAD6C217641A0A6466A2872AD7741AE54B273D" : 0,
+    "D2AD29AE1B693121D0EDBB4855C96B75ECBB0D86" : 0,
+    "67620B5EFA902936DF04070AF595B76AB0333747" : 0
+  },
+  "DVTSourceControlWorkspaceBlueprintIdentifierKey" : "3972A9E1-8571-4660-B3FC-74AE1AE6390D",
+  "DVTSourceControlWorkspaceBlueprintWorkingCopyPathsKey" : {
+    "76AAD6C217641A0A6466A2872AD7741AE54B273D" : "Remote-Media-Player\/",
+    "D2AD29AE1B693121D0EDBB4855C96B75ECBB0D86" : "Remote-Media-Player\/iOS\/AlamofireImage\/",
+    "67620B5EFA902936DF04070AF595B76AB0333747" : "Remote-Media-Player\/iOS\/Alamofire\/"
+  },
+  "DVTSourceControlWorkspaceBlueprintNameKey" : "Remote Media Player",
+  "DVTSourceControlWorkspaceBlueprintVersion" : 204,
+  "DVTSourceControlWorkspaceBlueprintRelativePathToProjectKey" : "iOS\/Remote Media Player.xcodeproj",
+  "DVTSourceControlWorkspaceBlueprintRemoteRepositoriesKey" : [
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/Alamofire.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "67620B5EFA902936DF04070AF595B76AB0333747"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Skyus\/Remote-Media-Player.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "76AAD6C217641A0A6466A2872AD7741AE54B273D"
+    },
+    {
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryURLKey" : "https:\/\/github.com\/Alamofire\/AlamofireImage.git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositorySystemKey" : "com.apple.dt.Xcode.sourcecontrol.Git",
+      "DVTSourceControlWorkspaceBlueprintRemoteRepositoryIdentifierKey" : "D2AD29AE1B693121D0EDBB4855C96B75ECBB0D86"
+    }
+  ]
+}

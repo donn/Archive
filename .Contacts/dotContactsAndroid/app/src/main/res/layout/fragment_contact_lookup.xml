@@ -1,0 +1,128 @@
+<LinearLayout
+    android:orientation="vertical"
+    xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context="potato.skyus.dotcontacts.ContactLookup"
+    >
+
+    <LinearLayout
+         android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <AutoCompleteTextView
+            android:inputType="phone"
+            android:hint="@string/lookup_phoneNumber"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="5"
+            android:id="@+id/contact_look_number"
+            android:layout_margin="10dp" />
+
+        <ImageButton
+            android:id="@+id/look_up_contact_btn"
+            android:src="@mipmap/search_icon"
+            android:background="@color/colorPrimaryDark"
+            android:layout_height="match_parent"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_margin="10dp" />
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:gravity="center_vertical"
+        android:orientation="vertical"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:layout_weight="1">
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:src="@mipmap/icon_profile"
+            android:id="@+id/contact_lookup_image"
+            android:layout_gravity="center_horizontal"
+            android:layout_width="100dp"
+            android:layout_height="100dp" />
+
+        <TextView
+            android:id="@+id/contact_lookup_name"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"/>
+
+
+        <TextView
+            android:id="@+id/contact_lookup_location"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center_horizontal"/>
+
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/contact_options"
+        android:visibility="invisible"
+        android:orientation="horizontal"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content">
+
+        <Space
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/call"
+            android:src="@mipmap/call_icon"
+            android:layout_height="56dp"
+            android:layout_width="56dp"/>
+
+
+        <Space
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/sms"
+            android:src="@mipmap/sms_icon"
+            android:layout_height="56dp"
+            android:layout_width="56dp" />
+
+
+        <Space
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/email"
+            android:layout_gravity="center"
+            android:src="@mipmap/email_icon"
+            android:layout_height="56dp"
+            android:layout_width="56dp" />
+
+
+        <Space
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+        <de.hdodenhof.circleimageview.CircleImageView
+            android:id="@+id/chat"
+            android:layout_gravity="center"
+            android:src="@mipmap/chat_icon_square"
+            android:layout_height="56dp"
+            android:layout_width="56dp" />
+
+
+        <Space
+            android:layout_weight="1"
+            android:layout_width="0dp"
+            android:layout_height="match_parent" />
+
+    </LinearLayout>
+
+</LinearLayout>

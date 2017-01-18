@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Remote Media Player</string>
+    <string name="general_displayClear"></string>
+    <string name="genres_title">Categories (Genres)</string>
+    <string name="shows_title">Shows in Category</string>
+    <string name="episodes_title">Episodes in Show</string>
+    <string name="about_title">About</string>
+    <string name="overflowmenu_update">Update</string>
+    <string name="overflowmenu_about">About</string>
+    <string name="about_text">Remote Media App
+
+        \n\nA simple media player that plays videos off a server, made for a school assignment.
+
+        \n\nDeveloped by github.com/skyus</string>
+</resources>
