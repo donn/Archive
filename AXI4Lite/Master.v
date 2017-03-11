@@ -28,11 +28,11 @@ module Master
 
     //Read Address
     //Output
-    AWVALID,
-    AWADDR,
-    AWPROT,
+    ARVALID,
+    ARADDR,
+    ARPROT,
     //Input
-    AWREADY,
+    ARREADY,
 
     //Read Data
     //Output    

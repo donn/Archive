@@ -28,11 +28,11 @@ module Slave
 
     //Read Address
     //Input
-    AWVALID,
-    AWADDR,
-    AWPROT,
+    ARVALID,
+    ARADDR,
+    ARPROT,
     //Output
-    AWREADY,
+    ARREADY,
 
     //Read Data
     //Input    
