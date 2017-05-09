@@ -1,0 +1,12 @@
+FSM fsmOne
+VAR X, Y
+States:
+a: out "state A", X=X+1, sleep 10, wait
+b: out "state B", Y=Y+1, sleep 10, wait
+c: out "thank you for using fsm1", out X, out Y, end
+Transitions:
+a, b, 1
+b, a, 2
+b, a, 2
+b, b, 1
+b, c, 3

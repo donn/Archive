@@ -1,0 +1,16 @@
+FSM branchPrediction
+
+States:
+take: out "taking", wait
+takeless: out "taking (edge)", wait
+nottakeless: out "not taking (edge)", wait
+nottake: out "not taking", wait
+Transitions:
+take, take, 1
+take, takeless, 0
+takeless, take, 1
+takeless, nottakeless, 0
+nottakeless, takeless, 1
+nottakeless, nottake, 0
+nottake, nottakeless, 1
+nottake, nottake, 0
