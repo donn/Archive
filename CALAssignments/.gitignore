@@ -1,0 +1,5 @@
+**/*.vvp
+**/*.vcd
+**/*.out
+**/*.elf
+!Lab7/computer.vcd
