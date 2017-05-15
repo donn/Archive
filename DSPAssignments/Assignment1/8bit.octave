@@ -1,0 +1,53 @@
+#!/usr/bin/octave
+global frequency = 4;
+global samplingRate = 40;
+global bits = 8;
+global minvolt = -1;
+global maxvolt = 1;
+global range = maxvolt - minvolt;
+global startTime = 0;
+global endTime = 1;
+global period = endTime - startTime;
+global LSB = range / (bits.^2 - 1);
+
+fplot("sin(2 * 4 * pi * t)", [startTime, endTime], 'b'); %Manually replace 4 with frequency, sorry
+hold on;
+
+sampleTimes = [];
+sampleValues = [];
+sampleValuesUnquantized = [];
+quantizationErrors = [];
+
+for i = [startTime:(1 / samplingRate):endTime]
+    sampleTimes = [sampleTimes i];
+
+    j = LSB * floor(sin(2 * frequency * pi * i) / LSB + 0.5);
+    sampleValues = [sampleValues j];
+
+    jUq = sin(2 * frequency * pi * i);
+    quantizationErrors = [quantizationErrors (jUq - j)];
+endfor
+
+deviation = 0;
+average = mean(quantizationErrors);
+for i = [1:samplingRate + 1]
+    deviation += (quantizationErrors(i) - average)^2;
+endfor
+deviation = sqrt(deviation / samplingRate);
+
+plot(sampleTimes, sampleValues, '.r');
+xlabel("time (s)");
+ylabel("voltage (mV)");
+legend("hide");
+
+printf("Average Quantization Error:");
+disp(mean(quantizationErrors));
+
+printf("\nStandard Deviation (Theoretical):");
+disp(sqrt(LSB.^2 / 12) - average^2);
+
+printf("\nStandard Deviation (Practical):");
+disp(deviation);
+
+discard = input("\nPress return to continue.");
+close();
