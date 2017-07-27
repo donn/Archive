@@ -14,7 +14,7 @@ Templates for the ARM-standardized bus in Verilog.
     WVALID: [Master -> Slave] Whether data provided by master is valid.
     WDATA: [Master -> Slave] Address. [31: 0]
     WSTRB: [Master -> Slave] Strobes. { write bytes[3], write bytes[2], write bytes[1], write bytes[0]}. [3:0]
-    AWREADY: [Slave -> Master] Whether the slave is ready to receive data.
+    WREADY: [Slave -> Master] Whether the slave is ready to receive data.
 
     //Write Response
     BREADY: [Master -> Slave] Whether the master is ready to receive the write response.
