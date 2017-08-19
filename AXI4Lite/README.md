@@ -12,7 +12,7 @@ Templates for the ARM-standardized bus in Verilog.
 
     //Write Data
     WVALID: [Master -> Slave] Whether data provided by master is valid.
-    WDATA: [Master -> Slave] Address. [31: 0]
+    WDATA: [Master -> Slave] Data. [31: 0]
     WSTRB: [Master -> Slave] Strobes. { write bytes[3], write bytes[2], write bytes[1], write bytes[0]}. [3:0]
     WREADY: [Slave -> Master] Whether the slave is ready to receive data.
 
@@ -28,7 +28,7 @@ Templates for the ARM-standardized bus in Verilog.
     ARREADY: [Slave -> Master] Whether the slave is ready to receive data.
 
     //Read Data
-    RREADY: [Master -> Slave] Whether master is ready to receive data.
     RVALID: [Slave -> Master] Whether the data provided by slave is valid.
     RDATA: [Slave -> Master] Data. [31: 0]
     RRESP: [Slave -> Master] enum {okay = 2'b00, exokay = 2'b01, slverr = 2'b10, decerr = 2'b11}. [1:0] //Exclusive Access Okay "exokay" not available in AXI4-lite.
+    RREADY: [Master -> Slave] Whether master is ready to receive data.
