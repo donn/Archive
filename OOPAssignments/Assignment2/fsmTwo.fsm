@@ -1,7 +1,0 @@
-FSM fsmTwo
-States:
-a: out "state A machine 2", sleep 10, run fsmOne, wait
-b: out "thank you for using fsmTwo", end
-Transitions:
-a, b, 1
-a, b, 2
