@@ -119,7 +119,7 @@ int main(int argc, char* argv[])
         // recollection (first so shell builtins can also be used)
         if (arguments[0][0] == '!') {
             if (count > 1) {
-                fprintf(stderr, "🐌  Too many arguments for history recollection.\n");
+                fprintf(stderr, "🐌  Invalid argument count for history recollection.\n");
                 continue;
             }
             if (arguments[0][1] ==  '!') {
@@ -156,7 +156,7 @@ int main(int argc, char* argv[])
             if (count <= 1) {
                 return 0;                
             } else {
-                fprintf(stderr, "🐌  Too many arguments for exit.\n");
+                fprintf(stderr, "🐌  Invalid argument count for exit.\n");
                 continue;
             }
         }
@@ -165,7 +165,7 @@ int main(int argc, char* argv[])
         if (strcmp(arguments[0], "history") == 0) {
             execute = false;
             if (count > 1) {
-                fprintf(stderr, "🐌  Too many arguments for history.\n");
+                fprintf(stderr, "🐌  Invalid argument count for history.\n");
                 continue;
             } else {
                 struct LinkedList* iterator = history->next;
