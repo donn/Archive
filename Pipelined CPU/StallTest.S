@@ -6,4 +6,3 @@ add $s3, $s2, $zero
 add $s3, $s2, $zero
 add $s3, $s2, $zero
 add $s3, $s2, $zero
-add $s3, $s2, $zero
