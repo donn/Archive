@@ -119,11 +119,7 @@ int main(int argc, char* argv[])
         // recollection (first so shell builtins can also be used)
         if (arguments[0][0] == '!') {
             if (count > 1) {
-<<<<<<< HEAD
-                fprintf(stderr, "🐌  A lot of arguments for history recollection.\n");
-=======
                 fprintf(stderr, "🐌  Invalid argument count for history recollection.\n");
->>>>>>> shell_change
                 continue;
             }
             if (arguments[0][1] ==  '!') {
