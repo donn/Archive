@@ -1,0 +1,8 @@
+**/__pycache__/
+**/*.pyc
+**/*.out
+**/*.txt
+**/*.log
+**/parsetab.py
+*.def
+*.lef

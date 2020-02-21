@@ -1,0 +1,1566 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Unused terminals:
+
+    STRING
+    ORIENTATION
+    FWSLASH
+    NEWLINE
+    PIPE
+
+Grammar
+
+Rule 0     S' -> root
+Rule 1     root -> declarations design_spec root
+Rule 2     root -> empty
+Rule 3     declarations -> version_spec declarations
+Rule 4     declarations -> namescasesensitive_spec declarations
+Rule 5     declarations -> dividerchar_spec declarations
+Rule 6     declarations -> busbitchars_spec declarations
+Rule 7     declarations -> design_dec declarations
+Rule 8     declarations -> unitsdistancemicrons_spec declarations
+Rule 9     declarations -> empty
+Rule 10    busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+Rule 11    version_spec -> VERSION FLOAT SEMICOLON
+Rule 12    namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON
+Rule 13    dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+Rule 14    design_dec -> DESIGN VARNAME SEMICOLON
+Rule 15    unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON
+Rule 16    design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN
+Rule 17    diearea_specs -> DIEAREA xandy xandy SEMICOLON
+Rule 18    tracks_specs -> TRACKS VARNAME INT DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+Rule 19    tracks_specs -> empty
+Rule 20    comp_specs -> COMPONENTS INT SEMICOLON components_mem END COMPONENTS
+Rule 21    components_mem -> MINUS VARNAME VARNAME component_info components_mem
+Rule 22    components_mem -> empty
+Rule 23    component_info -> PLUS PLACED xandy VARNAME component_info
+Rule 24    component_info -> SEMICOLON
+Rule 25    pins_specs -> PINS INT SEMICOLON pins_mem END PINS
+Rule 26    pins_mem -> MINUS pin_name PLUS NET pin_name pin_info pins_mem
+Rule 27    pins_mem -> empty
+Rule 28    pin_info -> PLUS LAYER METAL_ID xandy xandy pin_info
+Rule 29    pin_info -> PLUS PLACED xandy VARNAME pin_info
+Rule 30    pin_info -> SEMICOLON
+Rule 31    pin_name -> VARNAME
+Rule 32    pin_name -> VARNAME bus_bit
+Rule 33    bus_bit -> LANGLE INT RANGLE
+Rule 34    bus_bit -> LBRACKET INT RBRACKET
+Rule 35    xandy -> LPAREN INT INT RPAREN
+Rule 36    nets_specs -> NETS INT SEMICOLON nets_mem END NETS
+Rule 37    nets_mem -> MINUS net_name con_pins nets_mem
+Rule 38    nets_mem -> empty
+Rule 39    net_name -> pin_name
+Rule 40    net_name -> VARNAME
+Rule 41    con_pins -> con_pin con_pins
+Rule 42    con_pins -> SEMICOLON
+Rule 43    con_pin -> LPAREN name_and_pin RPAREN
+Rule 44    name_and_pin -> PIN pin_name
+Rule 45    name_and_pin -> VARNAME VARNAME
+Rule 46    empty -> <empty>
+
+Terminals, with rules where they appear
+
+BOOL                 : 12
+BUSBITCHARS          : 10
+CHAR_PAIRS_QUOTED    : 10 13
+COMPONENTS           : 20 20
+DESIGN               : 14 16
+DIEAREA              : 17
+DISTANCE             : 15
+DIVIDERCHAR          : 13
+DO                   : 18
+END                  : 16 20 25 36
+FLOAT                : 11
+FWSLASH              : 
+INT                  : 15 18 18 18 20 25 33 34 35 35 36
+LANGLE               : 33
+LAYER                : 18 28
+LBRACKET             : 34
+LPAREN               : 35 43
+METAL_ID             : 18 28
+MICRONS              : 15
+MINUS                : 21 26 37
+NAMESCASESENSITIVE   : 12
+NET                  : 26
+NETS                 : 36 36
+NEWLINE              : 
+ORIENTATION          : 
+PIN                  : 44
+PINS                 : 25 25
+PIPE                 : 
+PLACED               : 23 29
+PLUS                 : 23 26 28 29
+RANGLE               : 33
+RBRACKET             : 34
+RPAREN               : 35 43
+SEMICOLON            : 10 11 12 13 14 15 17 18 20 24 25 30 36 42
+STEP                 : 18
+STRING               : 
+TRACKS               : 18
+UNITS                : 15
+VARNAME              : 14 18 21 21 23 29 31 32 40 45 45
+VERSION              : 11
+error                : 
+
+Nonterminals, with rules where they appear
+
+bus_bit              : 32
+busbitchars_spec     : 6
+comp_specs           : 16
+component_info       : 21 23
+components_mem       : 20 21
+con_pin              : 41
+con_pins             : 37 41
+declarations         : 1 3 4 5 6 7 8
+design_dec           : 7
+design_spec          : 1
+diearea_specs        : 16
+dividerchar_spec     : 5
+empty                : 2 9 19 22 27 38
+name_and_pin         : 43
+namescasesensitive_spec : 4
+net_name             : 37
+nets_mem             : 36 37
+nets_specs           : 16
+pin_info             : 26 28 29
+pin_name             : 26 26 39 44
+pins_mem             : 25 26
+pins_specs           : 16
+root                 : 1 0
+tracks_specs         : 16 18
+unitsdistancemicrons_spec : 8
+version_spec         : 3
+xandy                : 17 17 23 28 28 29
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . root
+    (1) root -> . declarations design_spec root
+    (2) root -> . empty
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (46) empty -> .
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+
+    $end            reduce using rule 46 (empty -> .)
+    DIEAREA         reduce using rule 46 (empty -> .)
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+
+    namescasesensitive_spec        shift and go to state 1
+    root                           shift and go to state 2
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 9
+    unitsdistancemicrons_spec      shift and go to state 4
+    dividerchar_spec               shift and go to state 5
+    design_dec                     shift and go to state 11
+    declarations                   shift and go to state 6
+    busbitchars_spec               shift and go to state 12
+
+state 1
+
+    (4) declarations -> namescasesensitive_spec . declarations
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+    (46) empty -> .
+
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+    DIEAREA         reduce using rule 46 (empty -> .)
+
+    namescasesensitive_spec        shift and go to state 1
+    unitsdistancemicrons_spec      shift and go to state 4
+    busbitchars_spec               shift and go to state 12
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 17
+    dividerchar_spec               shift and go to state 5
+    design_dec                     shift and go to state 11
+    declarations                   shift and go to state 16
+
+state 2
+
+    (0) S' -> root .
+
+
+
+state 3
+
+    (12) namescasesensitive_spec -> NAMESCASESENSITIVE . BOOL SEMICOLON
+
+    BOOL            shift and go to state 18
+
+
+state 4
+
+    (8) declarations -> unitsdistancemicrons_spec . declarations
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+    (46) empty -> .
+
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+    DIEAREA         reduce using rule 46 (empty -> .)
+
+    namescasesensitive_spec        shift and go to state 1
+    unitsdistancemicrons_spec      shift and go to state 4
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 17
+    dividerchar_spec               shift and go to state 5
+    design_dec                     shift and go to state 11
+    declarations                   shift and go to state 19
+    busbitchars_spec               shift and go to state 12
+
+state 5
+
+    (5) declarations -> dividerchar_spec . declarations
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+    (46) empty -> .
+
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+    DIEAREA         reduce using rule 46 (empty -> .)
+
+    namescasesensitive_spec        shift and go to state 1
+    unitsdistancemicrons_spec      shift and go to state 4
+    busbitchars_spec               shift and go to state 12
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 17
+    dividerchar_spec               shift and go to state 5
+    design_dec                     shift and go to state 11
+    declarations                   shift and go to state 20
+
+state 6
+
+    (1) root -> declarations . design_spec root
+    (16) design_spec -> . diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN
+    (17) diearea_specs -> . DIEAREA xandy xandy SEMICOLON
+
+    DIEAREA         shift and go to state 23
+
+    diearea_specs                  shift and go to state 22
+    design_spec                    shift and go to state 21
+
+state 7
+
+    (15) unitsdistancemicrons_spec -> UNITS . DISTANCE MICRONS INT SEMICOLON
+
+    DISTANCE        shift and go to state 24
+
+
+state 8
+
+    (11) version_spec -> VERSION . FLOAT SEMICOLON
+
+    FLOAT           shift and go to state 25
+
+
+state 9
+
+    (2) root -> empty .
+    (9) declarations -> empty .
+
+    $end            reduce using rule 2 (root -> empty .)
+    DIEAREA         reduce using rule 9 (declarations -> empty .)
+
+
+state 10
+
+    (14) design_dec -> DESIGN . VARNAME SEMICOLON
+
+    VARNAME         shift and go to state 26
+
+
+state 11
+
+    (7) declarations -> design_dec . declarations
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+    (46) empty -> .
+
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+    DIEAREA         reduce using rule 46 (empty -> .)
+
+    design_dec                     shift and go to state 11
+    unitsdistancemicrons_spec      shift and go to state 4
+    busbitchars_spec               shift and go to state 12
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 17
+    dividerchar_spec               shift and go to state 5
+    namescasesensitive_spec        shift and go to state 1
+    declarations                   shift and go to state 27
+
+state 12
+
+    (6) declarations -> busbitchars_spec . declarations
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+    (46) empty -> .
+
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+    DIEAREA         reduce using rule 46 (empty -> .)
+
+    namescasesensitive_spec        shift and go to state 1
+    unitsdistancemicrons_spec      shift and go to state 4
+    busbitchars_spec               shift and go to state 12
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 17
+    dividerchar_spec               shift and go to state 5
+    design_dec                     shift and go to state 11
+    declarations                   shift and go to state 28
+
+state 13
+
+    (3) declarations -> version_spec . declarations
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+    (46) empty -> .
+
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+    DIEAREA         reduce using rule 46 (empty -> .)
+
+    namescasesensitive_spec        shift and go to state 1
+    unitsdistancemicrons_spec      shift and go to state 4
+    busbitchars_spec               shift and go to state 12
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 17
+    dividerchar_spec               shift and go to state 5
+    design_dec                     shift and go to state 11
+    declarations                   shift and go to state 29
+
+state 14
+
+    (13) dividerchar_spec -> DIVIDERCHAR . CHAR_PAIRS_QUOTED SEMICOLON
+
+    CHAR_PAIRS_QUOTED shift and go to state 30
+
+
+state 15
+
+    (10) busbitchars_spec -> BUSBITCHARS . CHAR_PAIRS_QUOTED SEMICOLON
+
+    CHAR_PAIRS_QUOTED shift and go to state 31
+
+
+state 16
+
+    (4) declarations -> namescasesensitive_spec declarations .
+
+    DIEAREA         reduce using rule 4 (declarations -> namescasesensitive_spec declarations .)
+
+
+state 17
+
+    (9) declarations -> empty .
+
+    DIEAREA         reduce using rule 9 (declarations -> empty .)
+
+
+state 18
+
+    (12) namescasesensitive_spec -> NAMESCASESENSITIVE BOOL . SEMICOLON
+
+    SEMICOLON       shift and go to state 32
+
+
+state 19
+
+    (8) declarations -> unitsdistancemicrons_spec declarations .
+
+    DIEAREA         reduce using rule 8 (declarations -> unitsdistancemicrons_spec declarations .)
+
+
+state 20
+
+    (5) declarations -> dividerchar_spec declarations .
+
+    DIEAREA         reduce using rule 5 (declarations -> dividerchar_spec declarations .)
+
+
+state 21
+
+    (1) root -> declarations design_spec . root
+    (1) root -> . declarations design_spec root
+    (2) root -> . empty
+    (3) declarations -> . version_spec declarations
+    (4) declarations -> . namescasesensitive_spec declarations
+    (5) declarations -> . dividerchar_spec declarations
+    (6) declarations -> . busbitchars_spec declarations
+    (7) declarations -> . design_dec declarations
+    (8) declarations -> . unitsdistancemicrons_spec declarations
+    (9) declarations -> . empty
+    (46) empty -> .
+    (11) version_spec -> . VERSION FLOAT SEMICOLON
+    (12) namescasesensitive_spec -> . NAMESCASESENSITIVE BOOL SEMICOLON
+    (13) dividerchar_spec -> . DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON
+    (10) busbitchars_spec -> . BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON
+    (14) design_dec -> . DESIGN VARNAME SEMICOLON
+    (15) unitsdistancemicrons_spec -> . UNITS DISTANCE MICRONS INT SEMICOLON
+
+    $end            reduce using rule 46 (empty -> .)
+    DIEAREA         reduce using rule 46 (empty -> .)
+    VERSION         shift and go to state 8
+    NAMESCASESENSITIVE shift and go to state 3
+    DIVIDERCHAR     shift and go to state 14
+    BUSBITCHARS     shift and go to state 15
+    DESIGN          shift and go to state 10
+    UNITS           shift and go to state 7
+
+    namescasesensitive_spec        shift and go to state 1
+    root                           shift and go to state 33
+    version_spec                   shift and go to state 13
+    empty                          shift and go to state 9
+    unitsdistancemicrons_spec      shift and go to state 4
+    dividerchar_spec               shift and go to state 5
+    design_dec                     shift and go to state 11
+    declarations                   shift and go to state 6
+    busbitchars_spec               shift and go to state 12
+
+state 22
+
+    (16) design_spec -> diearea_specs . tracks_specs comp_specs pins_specs nets_specs END DESIGN
+    (18) tracks_specs -> . TRACKS VARNAME INT DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+    (19) tracks_specs -> . empty
+    (46) empty -> .
+
+    TRACKS          shift and go to state 36
+    COMPONENTS      reduce using rule 46 (empty -> .)
+
+    tracks_specs                   shift and go to state 34
+    empty                          shift and go to state 35
+
+state 23
+
+    (17) diearea_specs -> DIEAREA . xandy xandy SEMICOLON
+    (35) xandy -> . LPAREN INT INT RPAREN
+
+    LPAREN          shift and go to state 38
+
+    xandy                          shift and go to state 37
+
+state 24
+
+    (15) unitsdistancemicrons_spec -> UNITS DISTANCE . MICRONS INT SEMICOLON
+
+    MICRONS         shift and go to state 39
+
+
+state 25
+
+    (11) version_spec -> VERSION FLOAT . SEMICOLON
+
+    SEMICOLON       shift and go to state 40
+
+
+state 26
+
+    (14) design_dec -> DESIGN VARNAME . SEMICOLON
+
+    SEMICOLON       shift and go to state 41
+
+
+state 27
+
+    (7) declarations -> design_dec declarations .
+
+    DIEAREA         reduce using rule 7 (declarations -> design_dec declarations .)
+
+
+state 28
+
+    (6) declarations -> busbitchars_spec declarations .
+
+    DIEAREA         reduce using rule 6 (declarations -> busbitchars_spec declarations .)
+
+
+state 29
+
+    (3) declarations -> version_spec declarations .
+
+    DIEAREA         reduce using rule 3 (declarations -> version_spec declarations .)
+
+
+state 30
+
+    (13) dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED . SEMICOLON
+
+    SEMICOLON       shift and go to state 42
+
+
+state 31
+
+    (10) busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED . SEMICOLON
+
+    SEMICOLON       shift and go to state 43
+
+
+state 32
+
+    (12) namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .
+
+    VERSION         reduce using rule 12 (namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .)
+    NAMESCASESENSITIVE reduce using rule 12 (namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .)
+    DIVIDERCHAR     reduce using rule 12 (namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .)
+    BUSBITCHARS     reduce using rule 12 (namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .)
+    DESIGN          reduce using rule 12 (namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .)
+    UNITS           reduce using rule 12 (namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .)
+    DIEAREA         reduce using rule 12 (namescasesensitive_spec -> NAMESCASESENSITIVE BOOL SEMICOLON .)
+
+
+state 33
+
+    (1) root -> declarations design_spec root .
+
+    $end            reduce using rule 1 (root -> declarations design_spec root .)
+
+
+state 34
+
+    (16) design_spec -> diearea_specs tracks_specs . comp_specs pins_specs nets_specs END DESIGN
+    (20) comp_specs -> . COMPONENTS INT SEMICOLON components_mem END COMPONENTS
+
+    COMPONENTS      shift and go to state 44
+
+    comp_specs                     shift and go to state 45
+
+state 35
+
+    (19) tracks_specs -> empty .
+
+    COMPONENTS      reduce using rule 19 (tracks_specs -> empty .)
+
+
+state 36
+
+    (18) tracks_specs -> TRACKS . VARNAME INT DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+
+    VARNAME         shift and go to state 46
+
+
+state 37
+
+    (17) diearea_specs -> DIEAREA xandy . xandy SEMICOLON
+    (35) xandy -> . LPAREN INT INT RPAREN
+
+    LPAREN          shift and go to state 38
+
+    xandy                          shift and go to state 47
+
+state 38
+
+    (35) xandy -> LPAREN . INT INT RPAREN
+
+    INT             shift and go to state 48
+
+
+state 39
+
+    (15) unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS . INT SEMICOLON
+
+    INT             shift and go to state 49
+
+
+state 40
+
+    (11) version_spec -> VERSION FLOAT SEMICOLON .
+
+    VERSION         reduce using rule 11 (version_spec -> VERSION FLOAT SEMICOLON .)
+    NAMESCASESENSITIVE reduce using rule 11 (version_spec -> VERSION FLOAT SEMICOLON .)
+    DIVIDERCHAR     reduce using rule 11 (version_spec -> VERSION FLOAT SEMICOLON .)
+    BUSBITCHARS     reduce using rule 11 (version_spec -> VERSION FLOAT SEMICOLON .)
+    DESIGN          reduce using rule 11 (version_spec -> VERSION FLOAT SEMICOLON .)
+    UNITS           reduce using rule 11 (version_spec -> VERSION FLOAT SEMICOLON .)
+    DIEAREA         reduce using rule 11 (version_spec -> VERSION FLOAT SEMICOLON .)
+
+
+state 41
+
+    (14) design_dec -> DESIGN VARNAME SEMICOLON .
+
+    VERSION         reduce using rule 14 (design_dec -> DESIGN VARNAME SEMICOLON .)
+    NAMESCASESENSITIVE reduce using rule 14 (design_dec -> DESIGN VARNAME SEMICOLON .)
+    DIVIDERCHAR     reduce using rule 14 (design_dec -> DESIGN VARNAME SEMICOLON .)
+    BUSBITCHARS     reduce using rule 14 (design_dec -> DESIGN VARNAME SEMICOLON .)
+    DESIGN          reduce using rule 14 (design_dec -> DESIGN VARNAME SEMICOLON .)
+    UNITS           reduce using rule 14 (design_dec -> DESIGN VARNAME SEMICOLON .)
+    DIEAREA         reduce using rule 14 (design_dec -> DESIGN VARNAME SEMICOLON .)
+
+
+state 42
+
+    (13) dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .
+
+    VERSION         reduce using rule 13 (dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .)
+    NAMESCASESENSITIVE reduce using rule 13 (dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .)
+    DIVIDERCHAR     reduce using rule 13 (dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .)
+    BUSBITCHARS     reduce using rule 13 (dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .)
+    DESIGN          reduce using rule 13 (dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .)
+    UNITS           reduce using rule 13 (dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .)
+    DIEAREA         reduce using rule 13 (dividerchar_spec -> DIVIDERCHAR CHAR_PAIRS_QUOTED SEMICOLON .)
+
+
+state 43
+
+    (10) busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .
+
+    VERSION         reduce using rule 10 (busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .)
+    NAMESCASESENSITIVE reduce using rule 10 (busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .)
+    DIVIDERCHAR     reduce using rule 10 (busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .)
+    BUSBITCHARS     reduce using rule 10 (busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .)
+    DESIGN          reduce using rule 10 (busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .)
+    UNITS           reduce using rule 10 (busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .)
+    DIEAREA         reduce using rule 10 (busbitchars_spec -> BUSBITCHARS CHAR_PAIRS_QUOTED SEMICOLON .)
+
+
+state 44
+
+    (20) comp_specs -> COMPONENTS . INT SEMICOLON components_mem END COMPONENTS
+
+    INT             shift and go to state 50
+
+
+state 45
+
+    (16) design_spec -> diearea_specs tracks_specs comp_specs . pins_specs nets_specs END DESIGN
+    (25) pins_specs -> . PINS INT SEMICOLON pins_mem END PINS
+
+    PINS            shift and go to state 51
+
+    pins_specs                     shift and go to state 52
+
+state 46
+
+    (18) tracks_specs -> TRACKS VARNAME . INT DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+
+    INT             shift and go to state 53
+
+
+state 47
+
+    (17) diearea_specs -> DIEAREA xandy xandy . SEMICOLON
+
+    SEMICOLON       shift and go to state 54
+
+
+state 48
+
+    (35) xandy -> LPAREN INT . INT RPAREN
+
+    INT             shift and go to state 55
+
+
+state 49
+
+    (15) unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT . SEMICOLON
+
+    SEMICOLON       shift and go to state 56
+
+
+state 50
+
+    (20) comp_specs -> COMPONENTS INT . SEMICOLON components_mem END COMPONENTS
+
+    SEMICOLON       shift and go to state 57
+
+
+state 51
+
+    (25) pins_specs -> PINS . INT SEMICOLON pins_mem END PINS
+
+    INT             shift and go to state 58
+
+
+state 52
+
+    (16) design_spec -> diearea_specs tracks_specs comp_specs pins_specs . nets_specs END DESIGN
+    (36) nets_specs -> . NETS INT SEMICOLON nets_mem END NETS
+
+    NETS            shift and go to state 59
+
+    nets_specs                     shift and go to state 60
+
+state 53
+
+    (18) tracks_specs -> TRACKS VARNAME INT . DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+
+    DO              shift and go to state 61
+
+
+state 54
+
+    (17) diearea_specs -> DIEAREA xandy xandy SEMICOLON .
+
+    TRACKS          reduce using rule 17 (diearea_specs -> DIEAREA xandy xandy SEMICOLON .)
+    COMPONENTS      reduce using rule 17 (diearea_specs -> DIEAREA xandy xandy SEMICOLON .)
+
+
+state 55
+
+    (35) xandy -> LPAREN INT INT . RPAREN
+
+    RPAREN          shift and go to state 62
+
+
+state 56
+
+    (15) unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .
+
+    VERSION         reduce using rule 15 (unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .)
+    NAMESCASESENSITIVE reduce using rule 15 (unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .)
+    DIVIDERCHAR     reduce using rule 15 (unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .)
+    BUSBITCHARS     reduce using rule 15 (unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .)
+    DESIGN          reduce using rule 15 (unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .)
+    UNITS           reduce using rule 15 (unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .)
+    DIEAREA         reduce using rule 15 (unitsdistancemicrons_spec -> UNITS DISTANCE MICRONS INT SEMICOLON .)
+
+
+state 57
+
+    (20) comp_specs -> COMPONENTS INT SEMICOLON . components_mem END COMPONENTS
+    (21) components_mem -> . MINUS VARNAME VARNAME component_info components_mem
+    (22) components_mem -> . empty
+    (46) empty -> .
+
+    MINUS           shift and go to state 65
+    END             reduce using rule 46 (empty -> .)
+
+    components_mem                 shift and go to state 64
+    empty                          shift and go to state 63
+
+state 58
+
+    (25) pins_specs -> PINS INT . SEMICOLON pins_mem END PINS
+
+    SEMICOLON       shift and go to state 66
+
+
+state 59
+
+    (36) nets_specs -> NETS . INT SEMICOLON nets_mem END NETS
+
+    INT             shift and go to state 67
+
+
+state 60
+
+    (16) design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs . END DESIGN
+
+    END             shift and go to state 68
+
+
+state 61
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO . INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+
+    INT             shift and go to state 69
+
+
+state 62
+
+    (35) xandy -> LPAREN INT INT RPAREN .
+
+    LPAREN          reduce using rule 35 (xandy -> LPAREN INT INT RPAREN .)
+    VARNAME         reduce using rule 35 (xandy -> LPAREN INT INT RPAREN .)
+    PLUS            reduce using rule 35 (xandy -> LPAREN INT INT RPAREN .)
+    SEMICOLON       reduce using rule 35 (xandy -> LPAREN INT INT RPAREN .)
+
+
+state 63
+
+    (22) components_mem -> empty .
+
+    END             reduce using rule 22 (components_mem -> empty .)
+
+
+state 64
+
+    (20) comp_specs -> COMPONENTS INT SEMICOLON components_mem . END COMPONENTS
+
+    END             shift and go to state 70
+
+
+state 65
+
+    (21) components_mem -> MINUS . VARNAME VARNAME component_info components_mem
+
+    VARNAME         shift and go to state 71
+
+
+state 66
+
+    (25) pins_specs -> PINS INT SEMICOLON . pins_mem END PINS
+    (26) pins_mem -> . MINUS pin_name PLUS NET pin_name pin_info pins_mem
+    (27) pins_mem -> . empty
+    (46) empty -> .
+
+    MINUS           shift and go to state 74
+    END             reduce using rule 46 (empty -> .)
+
+    pins_mem                       shift and go to state 72
+    empty                          shift and go to state 73
+
+state 67
+
+    (36) nets_specs -> NETS INT . SEMICOLON nets_mem END NETS
+
+    SEMICOLON       shift and go to state 75
+
+
+state 68
+
+    (16) design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END . DESIGN
+
+    DESIGN          shift and go to state 76
+
+
+state 69
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO INT . STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+
+    STEP            shift and go to state 77
+
+
+state 70
+
+    (20) comp_specs -> COMPONENTS INT SEMICOLON components_mem END . COMPONENTS
+
+    COMPONENTS      shift and go to state 78
+
+
+state 71
+
+    (21) components_mem -> MINUS VARNAME . VARNAME component_info components_mem
+
+    VARNAME         shift and go to state 79
+
+
+state 72
+
+    (25) pins_specs -> PINS INT SEMICOLON pins_mem . END PINS
+
+    END             shift and go to state 80
+
+
+state 73
+
+    (27) pins_mem -> empty .
+
+    END             reduce using rule 27 (pins_mem -> empty .)
+
+
+state 74
+
+    (26) pins_mem -> MINUS . pin_name PLUS NET pin_name pin_info pins_mem
+    (31) pin_name -> . VARNAME
+    (32) pin_name -> . VARNAME bus_bit
+
+    VARNAME         shift and go to state 81
+
+    pin_name                       shift and go to state 82
+
+state 75
+
+    (36) nets_specs -> NETS INT SEMICOLON . nets_mem END NETS
+    (37) nets_mem -> . MINUS net_name con_pins nets_mem
+    (38) nets_mem -> . empty
+    (46) empty -> .
+
+    MINUS           shift and go to state 85
+    END             reduce using rule 46 (empty -> .)
+
+    empty                          shift and go to state 83
+    nets_mem                       shift and go to state 84
+
+state 76
+
+    (16) design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .
+
+    VERSION         reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+    NAMESCASESENSITIVE reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+    DIVIDERCHAR     reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+    BUSBITCHARS     reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+    DESIGN          reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+    UNITS           reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+    DIEAREA         reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+    $end            reduce using rule 16 (design_spec -> diearea_specs tracks_specs comp_specs pins_specs nets_specs END DESIGN .)
+
+
+state 77
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO INT STEP . INT LAYER METAL_ID SEMICOLON tracks_specs
+
+    INT             shift and go to state 86
+
+
+state 78
+
+    (20) comp_specs -> COMPONENTS INT SEMICOLON components_mem END COMPONENTS .
+
+    PINS            reduce using rule 20 (comp_specs -> COMPONENTS INT SEMICOLON components_mem END COMPONENTS .)
+
+
+state 79
+
+    (21) components_mem -> MINUS VARNAME VARNAME . component_info components_mem
+    (23) component_info -> . PLUS PLACED xandy VARNAME component_info
+    (24) component_info -> . SEMICOLON
+
+    PLUS            shift and go to state 88
+    SEMICOLON       shift and go to state 89
+
+    component_info                 shift and go to state 87
+
+state 80
+
+    (25) pins_specs -> PINS INT SEMICOLON pins_mem END . PINS
+
+    PINS            shift and go to state 90
+
+
+state 81
+
+    (31) pin_name -> VARNAME .
+    (32) pin_name -> VARNAME . bus_bit
+    (33) bus_bit -> . LANGLE INT RANGLE
+    (34) bus_bit -> . LBRACKET INT RBRACKET
+
+    RPAREN          reduce using rule 31 (pin_name -> VARNAME .)
+    PLUS            reduce using rule 31 (pin_name -> VARNAME .)
+    SEMICOLON       reduce using rule 31 (pin_name -> VARNAME .)
+    LANGLE          shift and go to state 93
+    LBRACKET        shift and go to state 92
+
+    bus_bit                        shift and go to state 91
+
+state 82
+
+    (26) pins_mem -> MINUS pin_name . PLUS NET pin_name pin_info pins_mem
+
+    PLUS            shift and go to state 94
+
+
+state 83
+
+    (38) nets_mem -> empty .
+
+    END             reduce using rule 38 (nets_mem -> empty .)
+
+
+state 84
+
+    (36) nets_specs -> NETS INT SEMICOLON nets_mem . END NETS
+
+    END             shift and go to state 95
+
+
+state 85
+
+    (37) nets_mem -> MINUS . net_name con_pins nets_mem
+    (39) net_name -> . pin_name
+    (40) net_name -> . VARNAME
+    (31) pin_name -> . VARNAME
+    (32) pin_name -> . VARNAME bus_bit
+
+    VARNAME         shift and go to state 98
+
+    net_name                       shift and go to state 96
+    pin_name                       shift and go to state 97
+
+state 86
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO INT STEP INT . LAYER METAL_ID SEMICOLON tracks_specs
+
+    LAYER           shift and go to state 99
+
+
+state 87
+
+    (21) components_mem -> MINUS VARNAME VARNAME component_info . components_mem
+    (21) components_mem -> . MINUS VARNAME VARNAME component_info components_mem
+    (22) components_mem -> . empty
+    (46) empty -> .
+
+    MINUS           shift and go to state 65
+    END             reduce using rule 46 (empty -> .)
+
+    components_mem                 shift and go to state 100
+    empty                          shift and go to state 63
+
+state 88
+
+    (23) component_info -> PLUS . PLACED xandy VARNAME component_info
+
+    PLACED          shift and go to state 101
+
+
+state 89
+
+    (24) component_info -> SEMICOLON .
+
+    MINUS           reduce using rule 24 (component_info -> SEMICOLON .)
+    END             reduce using rule 24 (component_info -> SEMICOLON .)
+
+
+state 90
+
+    (25) pins_specs -> PINS INT SEMICOLON pins_mem END PINS .
+
+    NETS            reduce using rule 25 (pins_specs -> PINS INT SEMICOLON pins_mem END PINS .)
+
+
+state 91
+
+    (32) pin_name -> VARNAME bus_bit .
+
+    SEMICOLON       reduce using rule 32 (pin_name -> VARNAME bus_bit .)
+    LPAREN          reduce using rule 32 (pin_name -> VARNAME bus_bit .)
+    RPAREN          reduce using rule 32 (pin_name -> VARNAME bus_bit .)
+    PLUS            reduce using rule 32 (pin_name -> VARNAME bus_bit .)
+
+
+state 92
+
+    (34) bus_bit -> LBRACKET . INT RBRACKET
+
+    INT             shift and go to state 102
+
+
+state 93
+
+    (33) bus_bit -> LANGLE . INT RANGLE
+
+    INT             shift and go to state 103
+
+
+state 94
+
+    (26) pins_mem -> MINUS pin_name PLUS . NET pin_name pin_info pins_mem
+
+    NET             shift and go to state 104
+
+
+state 95
+
+    (36) nets_specs -> NETS INT SEMICOLON nets_mem END . NETS
+
+    NETS            shift and go to state 105
+
+
+state 96
+
+    (37) nets_mem -> MINUS net_name . con_pins nets_mem
+    (41) con_pins -> . con_pin con_pins
+    (42) con_pins -> . SEMICOLON
+    (43) con_pin -> . LPAREN name_and_pin RPAREN
+
+    SEMICOLON       shift and go to state 109
+    LPAREN          shift and go to state 106
+
+    con_pin                        shift and go to state 108
+    con_pins                       shift and go to state 107
+
+state 97
+
+    (39) net_name -> pin_name .
+
+    SEMICOLON       reduce using rule 39 (net_name -> pin_name .)
+    LPAREN          reduce using rule 39 (net_name -> pin_name .)
+
+
+state 98
+
+    (40) net_name -> VARNAME .
+    (31) pin_name -> VARNAME .
+    (32) pin_name -> VARNAME . bus_bit
+    (33) bus_bit -> . LANGLE INT RANGLE
+    (34) bus_bit -> . LBRACKET INT RBRACKET
+
+  ! reduce/reduce conflict for SEMICOLON resolved using rule 31 (pin_name -> VARNAME .)
+  ! reduce/reduce conflict for LPAREN resolved using rule 31 (pin_name -> VARNAME .)
+    SEMICOLON       reduce using rule 31 (pin_name -> VARNAME .)
+    LPAREN          reduce using rule 31 (pin_name -> VARNAME .)
+    LANGLE          shift and go to state 93
+    LBRACKET        shift and go to state 92
+
+  ! SEMICOLON       [ reduce using rule 40 (net_name -> VARNAME .) ]
+  ! LPAREN          [ reduce using rule 40 (net_name -> VARNAME .) ]
+
+    bus_bit                        shift and go to state 91
+
+state 99
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO INT STEP INT LAYER . METAL_ID SEMICOLON tracks_specs
+
+    METAL_ID        shift and go to state 110
+
+
+state 100
+
+    (21) components_mem -> MINUS VARNAME VARNAME component_info components_mem .
+
+    END             reduce using rule 21 (components_mem -> MINUS VARNAME VARNAME component_info components_mem .)
+
+
+state 101
+
+    (23) component_info -> PLUS PLACED . xandy VARNAME component_info
+    (35) xandy -> . LPAREN INT INT RPAREN
+
+    LPAREN          shift and go to state 38
+
+    xandy                          shift and go to state 111
+
+state 102
+
+    (34) bus_bit -> LBRACKET INT . RBRACKET
+
+    RBRACKET        shift and go to state 112
+
+
+state 103
+
+    (33) bus_bit -> LANGLE INT . RANGLE
+
+    RANGLE          shift and go to state 113
+
+
+state 104
+
+    (26) pins_mem -> MINUS pin_name PLUS NET . pin_name pin_info pins_mem
+    (31) pin_name -> . VARNAME
+    (32) pin_name -> . VARNAME bus_bit
+
+    VARNAME         shift and go to state 81
+
+    pin_name                       shift and go to state 114
+
+state 105
+
+    (36) nets_specs -> NETS INT SEMICOLON nets_mem END NETS .
+
+    END             reduce using rule 36 (nets_specs -> NETS INT SEMICOLON nets_mem END NETS .)
+
+
+state 106
+
+    (43) con_pin -> LPAREN . name_and_pin RPAREN
+    (44) name_and_pin -> . PIN pin_name
+    (45) name_and_pin -> . VARNAME VARNAME
+
+    PIN             shift and go to state 115
+    VARNAME         shift and go to state 116
+
+    name_and_pin                   shift and go to state 117
+
+state 107
+
+    (37) nets_mem -> MINUS net_name con_pins . nets_mem
+    (37) nets_mem -> . MINUS net_name con_pins nets_mem
+    (38) nets_mem -> . empty
+    (46) empty -> .
+
+    MINUS           shift and go to state 85
+    END             reduce using rule 46 (empty -> .)
+
+    empty                          shift and go to state 83
+    nets_mem                       shift and go to state 118
+
+state 108
+
+    (41) con_pins -> con_pin . con_pins
+    (41) con_pins -> . con_pin con_pins
+    (42) con_pins -> . SEMICOLON
+    (43) con_pin -> . LPAREN name_and_pin RPAREN
+
+    SEMICOLON       shift and go to state 109
+    LPAREN          shift and go to state 106
+
+    con_pins                       shift and go to state 119
+    con_pin                        shift and go to state 108
+
+state 109
+
+    (42) con_pins -> SEMICOLON .
+
+    MINUS           reduce using rule 42 (con_pins -> SEMICOLON .)
+    END             reduce using rule 42 (con_pins -> SEMICOLON .)
+
+
+state 110
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO INT STEP INT LAYER METAL_ID . SEMICOLON tracks_specs
+
+    SEMICOLON       shift and go to state 120
+
+
+state 111
+
+    (23) component_info -> PLUS PLACED xandy . VARNAME component_info
+
+    VARNAME         shift and go to state 121
+
+
+state 112
+
+    (34) bus_bit -> LBRACKET INT RBRACKET .
+
+    PLUS            reduce using rule 34 (bus_bit -> LBRACKET INT RBRACKET .)
+    SEMICOLON       reduce using rule 34 (bus_bit -> LBRACKET INT RBRACKET .)
+    RPAREN          reduce using rule 34 (bus_bit -> LBRACKET INT RBRACKET .)
+    LPAREN          reduce using rule 34 (bus_bit -> LBRACKET INT RBRACKET .)
+
+
+state 113
+
+    (33) bus_bit -> LANGLE INT RANGLE .
+
+    PLUS            reduce using rule 33 (bus_bit -> LANGLE INT RANGLE .)
+    SEMICOLON       reduce using rule 33 (bus_bit -> LANGLE INT RANGLE .)
+    RPAREN          reduce using rule 33 (bus_bit -> LANGLE INT RANGLE .)
+    LPAREN          reduce using rule 33 (bus_bit -> LANGLE INT RANGLE .)
+
+
+state 114
+
+    (26) pins_mem -> MINUS pin_name PLUS NET pin_name . pin_info pins_mem
+    (28) pin_info -> . PLUS LAYER METAL_ID xandy xandy pin_info
+    (29) pin_info -> . PLUS PLACED xandy VARNAME pin_info
+    (30) pin_info -> . SEMICOLON
+
+    PLUS            shift and go to state 123
+    SEMICOLON       shift and go to state 124
+
+    pin_info                       shift and go to state 122
+
+state 115
+
+    (44) name_and_pin -> PIN . pin_name
+    (31) pin_name -> . VARNAME
+    (32) pin_name -> . VARNAME bus_bit
+
+    VARNAME         shift and go to state 81
+
+    pin_name                       shift and go to state 125
+
+state 116
+
+    (45) name_and_pin -> VARNAME . VARNAME
+
+    VARNAME         shift and go to state 126
+
+
+state 117
+
+    (43) con_pin -> LPAREN name_and_pin . RPAREN
+
+    RPAREN          shift and go to state 127
+
+
+state 118
+
+    (37) nets_mem -> MINUS net_name con_pins nets_mem .
+
+    END             reduce using rule 37 (nets_mem -> MINUS net_name con_pins nets_mem .)
+
+
+state 119
+
+    (41) con_pins -> con_pin con_pins .
+
+    MINUS           reduce using rule 41 (con_pins -> con_pin con_pins .)
+    END             reduce using rule 41 (con_pins -> con_pin con_pins .)
+
+
+state 120
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO INT STEP INT LAYER METAL_ID SEMICOLON . tracks_specs
+    (18) tracks_specs -> . TRACKS VARNAME INT DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs
+    (19) tracks_specs -> . empty
+    (46) empty -> .
+
+    TRACKS          shift and go to state 36
+    COMPONENTS      reduce using rule 46 (empty -> .)
+
+    tracks_specs                   shift and go to state 128
+    empty                          shift and go to state 35
+
+state 121
+
+    (23) component_info -> PLUS PLACED xandy VARNAME . component_info
+    (23) component_info -> . PLUS PLACED xandy VARNAME component_info
+    (24) component_info -> . SEMICOLON
+
+    PLUS            shift and go to state 88
+    SEMICOLON       shift and go to state 89
+
+    component_info                 shift and go to state 129
+
+state 122
+
+    (26) pins_mem -> MINUS pin_name PLUS NET pin_name pin_info . pins_mem
+    (26) pins_mem -> . MINUS pin_name PLUS NET pin_name pin_info pins_mem
+    (27) pins_mem -> . empty
+    (46) empty -> .
+
+    MINUS           shift and go to state 74
+    END             reduce using rule 46 (empty -> .)
+
+    pins_mem                       shift and go to state 130
+    empty                          shift and go to state 73
+
+state 123
+
+    (28) pin_info -> PLUS . LAYER METAL_ID xandy xandy pin_info
+    (29) pin_info -> PLUS . PLACED xandy VARNAME pin_info
+
+    LAYER           shift and go to state 132
+    PLACED          shift and go to state 131
+
+
+state 124
+
+    (30) pin_info -> SEMICOLON .
+
+    MINUS           reduce using rule 30 (pin_info -> SEMICOLON .)
+    END             reduce using rule 30 (pin_info -> SEMICOLON .)
+
+
+state 125
+
+    (44) name_and_pin -> PIN pin_name .
+
+    RPAREN          reduce using rule 44 (name_and_pin -> PIN pin_name .)
+
+
+state 126
+
+    (45) name_and_pin -> VARNAME VARNAME .
+
+    RPAREN          reduce using rule 45 (name_and_pin -> VARNAME VARNAME .)
+
+
+state 127
+
+    (43) con_pin -> LPAREN name_and_pin RPAREN .
+
+    SEMICOLON       reduce using rule 43 (con_pin -> LPAREN name_and_pin RPAREN .)
+    LPAREN          reduce using rule 43 (con_pin -> LPAREN name_and_pin RPAREN .)
+
+
+state 128
+
+    (18) tracks_specs -> TRACKS VARNAME INT DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs .
+
+    COMPONENTS      reduce using rule 18 (tracks_specs -> TRACKS VARNAME INT DO INT STEP INT LAYER METAL_ID SEMICOLON tracks_specs .)
+
+
+state 129
+
+    (23) component_info -> PLUS PLACED xandy VARNAME component_info .
+
+    MINUS           reduce using rule 23 (component_info -> PLUS PLACED xandy VARNAME component_info .)
+    END             reduce using rule 23 (component_info -> PLUS PLACED xandy VARNAME component_info .)
+
+
+state 130
+
+    (26) pins_mem -> MINUS pin_name PLUS NET pin_name pin_info pins_mem .
+
+    END             reduce using rule 26 (pins_mem -> MINUS pin_name PLUS NET pin_name pin_info pins_mem .)
+
+
+state 131
+
+    (29) pin_info -> PLUS PLACED . xandy VARNAME pin_info
+    (35) xandy -> . LPAREN INT INT RPAREN
+
+    LPAREN          shift and go to state 38
+
+    xandy                          shift and go to state 133
+
+state 132
+
+    (28) pin_info -> PLUS LAYER . METAL_ID xandy xandy pin_info
+
+    METAL_ID        shift and go to state 134
+
+
+state 133
+
+    (29) pin_info -> PLUS PLACED xandy . VARNAME pin_info
+
+    VARNAME         shift and go to state 135
+
+
+state 134
+
+    (28) pin_info -> PLUS LAYER METAL_ID . xandy xandy pin_info
+    (35) xandy -> . LPAREN INT INT RPAREN
+
+    LPAREN          shift and go to state 38
+
+    xandy                          shift and go to state 136
+
+state 135
+
+    (29) pin_info -> PLUS PLACED xandy VARNAME . pin_info
+    (28) pin_info -> . PLUS LAYER METAL_ID xandy xandy pin_info
+    (29) pin_info -> . PLUS PLACED xandy VARNAME pin_info
+    (30) pin_info -> . SEMICOLON
+
+    PLUS            shift and go to state 123
+    SEMICOLON       shift and go to state 124
+
+    pin_info                       shift and go to state 137
+
+state 136
+
+    (28) pin_info -> PLUS LAYER METAL_ID xandy . xandy pin_info
+    (35) xandy -> . LPAREN INT INT RPAREN
+
+    LPAREN          shift and go to state 38
+
+    xandy                          shift and go to state 138
+
+state 137
+
+    (29) pin_info -> PLUS PLACED xandy VARNAME pin_info .
+
+    MINUS           reduce using rule 29 (pin_info -> PLUS PLACED xandy VARNAME pin_info .)
+    END             reduce using rule 29 (pin_info -> PLUS PLACED xandy VARNAME pin_info .)
+
+
+state 138
+
+    (28) pin_info -> PLUS LAYER METAL_ID xandy xandy . pin_info
+    (28) pin_info -> . PLUS LAYER METAL_ID xandy xandy pin_info
+    (29) pin_info -> . PLUS PLACED xandy VARNAME pin_info
+    (30) pin_info -> . SEMICOLON
+
+    PLUS            shift and go to state 123
+    SEMICOLON       shift and go to state 124
+
+    pin_info                       shift and go to state 139
+
+state 139
+
+    (28) pin_info -> PLUS LAYER METAL_ID xandy xandy pin_info .
+
+    MINUS           reduce using rule 28 (pin_info -> PLUS LAYER METAL_ID xandy xandy pin_info .)
+    END             reduce using rule 28 (pin_info -> PLUS LAYER METAL_ID xandy xandy pin_info .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: reduce/reduce conflict in state 98 resolved using rule (pin_name -> VARNAME)
+WARNING: rejected rule (net_name -> VARNAME) in state 98
+WARNING: Rule (net_name -> VARNAME) is never reduced

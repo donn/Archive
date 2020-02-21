@@ -1,0 +1,266 @@
+Created by PLY version 3.11 (http://www.dabeaz.com/ply)
+
+Grammar
+
+Rule 0     S' -> cmd_string
+Rule 1     cmd_string -> BLIF_FILE SCL_LEF_FILE DEF_FILE options
+Rule 2     options -> option option option
+Rule 3     option -> ASPECT_RATIO_OP FLOAT
+Rule 4     option -> ASPECT_RATIO_OP INT
+Rule 5     option -> CORE_UTILIZATION_OP FLOAT
+Rule 6     option -> SITE_WIDTH_OP INT
+Rule 7     option -> ROW_HEIGHT_OP INT
+Rule 8     option -> empty
+Rule 9     empty -> <empty>
+
+Terminals, with rules where they appear
+
+ASPECT_RATIO_OP      : 3 4
+BLIF_FILE            : 1
+CORE_UTILIZATION_OP  : 5
+DEF_FILE             : 1
+FLOAT                : 3 5
+INT                  : 4 6 7
+ROW_HEIGHT_OP        : 7
+SCL_LEF_FILE         : 1
+SITE_WIDTH_OP        : 6
+error                : 
+
+Nonterminals, with rules where they appear
+
+cmd_string           : 0
+empty                : 8
+option               : 2 2 2
+options              : 1
+
+Parsing method: LALR
+
+state 0
+
+    (0) S' -> . cmd_string
+    (1) cmd_string -> . BLIF_FILE SCL_LEF_FILE DEF_FILE options
+
+    BLIF_FILE       shift and go to state 2
+
+    cmd_string                     shift and go to state 1
+
+state 1
+
+    (0) S' -> cmd_string .
+
+
+
+state 2
+
+    (1) cmd_string -> BLIF_FILE . SCL_LEF_FILE DEF_FILE options
+
+    SCL_LEF_FILE    shift and go to state 3
+
+
+state 3
+
+    (1) cmd_string -> BLIF_FILE SCL_LEF_FILE . DEF_FILE options
+
+    DEF_FILE        shift and go to state 4
+
+
+state 4
+
+    (1) cmd_string -> BLIF_FILE SCL_LEF_FILE DEF_FILE . options
+    (2) options -> . option option option
+    (3) option -> . ASPECT_RATIO_OP FLOAT
+    (4) option -> . ASPECT_RATIO_OP INT
+    (5) option -> . CORE_UTILIZATION_OP FLOAT
+    (6) option -> . SITE_WIDTH_OP INT
+    (7) option -> . ROW_HEIGHT_OP INT
+    (8) option -> . empty
+    (9) empty -> .
+
+  ! shift/reduce conflict for ASPECT_RATIO_OP resolved as shift
+  ! shift/reduce conflict for CORE_UTILIZATION_OP resolved as shift
+  ! shift/reduce conflict for SITE_WIDTH_OP resolved as shift
+  ! shift/reduce conflict for ROW_HEIGHT_OP resolved as shift
+    ASPECT_RATIO_OP shift and go to state 7
+    CORE_UTILIZATION_OP shift and go to state 8
+    SITE_WIDTH_OP   shift and go to state 9
+    ROW_HEIGHT_OP   shift and go to state 10
+    $end            reduce using rule 9 (empty -> .)
+
+  ! ASPECT_RATIO_OP [ reduce using rule 9 (empty -> .) ]
+  ! CORE_UTILIZATION_OP [ reduce using rule 9 (empty -> .) ]
+  ! SITE_WIDTH_OP   [ reduce using rule 9 (empty -> .) ]
+  ! ROW_HEIGHT_OP   [ reduce using rule 9 (empty -> .) ]
+
+    options                        shift and go to state 5
+    option                         shift and go to state 6
+    empty                          shift and go to state 11
+
+state 5
+
+    (1) cmd_string -> BLIF_FILE SCL_LEF_FILE DEF_FILE options .
+
+    $end            reduce using rule 1 (cmd_string -> BLIF_FILE SCL_LEF_FILE DEF_FILE options .)
+
+
+state 6
+
+    (2) options -> option . option option
+    (3) option -> . ASPECT_RATIO_OP FLOAT
+    (4) option -> . ASPECT_RATIO_OP INT
+    (5) option -> . CORE_UTILIZATION_OP FLOAT
+    (6) option -> . SITE_WIDTH_OP INT
+    (7) option -> . ROW_HEIGHT_OP INT
+    (8) option -> . empty
+    (9) empty -> .
+
+  ! shift/reduce conflict for ASPECT_RATIO_OP resolved as shift
+  ! shift/reduce conflict for CORE_UTILIZATION_OP resolved as shift
+  ! shift/reduce conflict for SITE_WIDTH_OP resolved as shift
+  ! shift/reduce conflict for ROW_HEIGHT_OP resolved as shift
+    ASPECT_RATIO_OP shift and go to state 7
+    CORE_UTILIZATION_OP shift and go to state 8
+    SITE_WIDTH_OP   shift and go to state 9
+    ROW_HEIGHT_OP   shift and go to state 10
+    $end            reduce using rule 9 (empty -> .)
+
+  ! ASPECT_RATIO_OP [ reduce using rule 9 (empty -> .) ]
+  ! CORE_UTILIZATION_OP [ reduce using rule 9 (empty -> .) ]
+  ! SITE_WIDTH_OP   [ reduce using rule 9 (empty -> .) ]
+  ! ROW_HEIGHT_OP   [ reduce using rule 9 (empty -> .) ]
+
+    option                         shift and go to state 12
+    empty                          shift and go to state 11
+
+state 7
+
+    (3) option -> ASPECT_RATIO_OP . FLOAT
+    (4) option -> ASPECT_RATIO_OP . INT
+
+    FLOAT           shift and go to state 13
+    INT             shift and go to state 14
+
+
+state 8
+
+    (5) option -> CORE_UTILIZATION_OP . FLOAT
+
+    FLOAT           shift and go to state 15
+
+
+state 9
+
+    (6) option -> SITE_WIDTH_OP . INT
+
+    INT             shift and go to state 16
+
+
+state 10
+
+    (7) option -> ROW_HEIGHT_OP . INT
+
+    INT             shift and go to state 17
+
+
+state 11
+
+    (8) option -> empty .
+
+    ASPECT_RATIO_OP reduce using rule 8 (option -> empty .)
+    CORE_UTILIZATION_OP reduce using rule 8 (option -> empty .)
+    SITE_WIDTH_OP   reduce using rule 8 (option -> empty .)
+    ROW_HEIGHT_OP   reduce using rule 8 (option -> empty .)
+    $end            reduce using rule 8 (option -> empty .)
+
+
+state 12
+
+    (2) options -> option option . option
+    (3) option -> . ASPECT_RATIO_OP FLOAT
+    (4) option -> . ASPECT_RATIO_OP INT
+    (5) option -> . CORE_UTILIZATION_OP FLOAT
+    (6) option -> . SITE_WIDTH_OP INT
+    (7) option -> . ROW_HEIGHT_OP INT
+    (8) option -> . empty
+    (9) empty -> .
+
+    ASPECT_RATIO_OP shift and go to state 7
+    CORE_UTILIZATION_OP shift and go to state 8
+    SITE_WIDTH_OP   shift and go to state 9
+    ROW_HEIGHT_OP   shift and go to state 10
+    $end            reduce using rule 9 (empty -> .)
+
+    option                         shift and go to state 18
+    empty                          shift and go to state 11
+
+state 13
+
+    (3) option -> ASPECT_RATIO_OP FLOAT .
+
+    ASPECT_RATIO_OP reduce using rule 3 (option -> ASPECT_RATIO_OP FLOAT .)
+    CORE_UTILIZATION_OP reduce using rule 3 (option -> ASPECT_RATIO_OP FLOAT .)
+    SITE_WIDTH_OP   reduce using rule 3 (option -> ASPECT_RATIO_OP FLOAT .)
+    ROW_HEIGHT_OP   reduce using rule 3 (option -> ASPECT_RATIO_OP FLOAT .)
+    $end            reduce using rule 3 (option -> ASPECT_RATIO_OP FLOAT .)
+
+
+state 14
+
+    (4) option -> ASPECT_RATIO_OP INT .
+
+    ASPECT_RATIO_OP reduce using rule 4 (option -> ASPECT_RATIO_OP INT .)
+    CORE_UTILIZATION_OP reduce using rule 4 (option -> ASPECT_RATIO_OP INT .)
+    SITE_WIDTH_OP   reduce using rule 4 (option -> ASPECT_RATIO_OP INT .)
+    ROW_HEIGHT_OP   reduce using rule 4 (option -> ASPECT_RATIO_OP INT .)
+    $end            reduce using rule 4 (option -> ASPECT_RATIO_OP INT .)
+
+
+state 15
+
+    (5) option -> CORE_UTILIZATION_OP FLOAT .
+
+    ASPECT_RATIO_OP reduce using rule 5 (option -> CORE_UTILIZATION_OP FLOAT .)
+    CORE_UTILIZATION_OP reduce using rule 5 (option -> CORE_UTILIZATION_OP FLOAT .)
+    SITE_WIDTH_OP   reduce using rule 5 (option -> CORE_UTILIZATION_OP FLOAT .)
+    ROW_HEIGHT_OP   reduce using rule 5 (option -> CORE_UTILIZATION_OP FLOAT .)
+    $end            reduce using rule 5 (option -> CORE_UTILIZATION_OP FLOAT .)
+
+
+state 16
+
+    (6) option -> SITE_WIDTH_OP INT .
+
+    ASPECT_RATIO_OP reduce using rule 6 (option -> SITE_WIDTH_OP INT .)
+    CORE_UTILIZATION_OP reduce using rule 6 (option -> SITE_WIDTH_OP INT .)
+    SITE_WIDTH_OP   reduce using rule 6 (option -> SITE_WIDTH_OP INT .)
+    ROW_HEIGHT_OP   reduce using rule 6 (option -> SITE_WIDTH_OP INT .)
+    $end            reduce using rule 6 (option -> SITE_WIDTH_OP INT .)
+
+
+state 17
+
+    (7) option -> ROW_HEIGHT_OP INT .
+
+    ASPECT_RATIO_OP reduce using rule 7 (option -> ROW_HEIGHT_OP INT .)
+    CORE_UTILIZATION_OP reduce using rule 7 (option -> ROW_HEIGHT_OP INT .)
+    SITE_WIDTH_OP   reduce using rule 7 (option -> ROW_HEIGHT_OP INT .)
+    ROW_HEIGHT_OP   reduce using rule 7 (option -> ROW_HEIGHT_OP INT .)
+    $end            reduce using rule 7 (option -> ROW_HEIGHT_OP INT .)
+
+
+state 18
+
+    (2) options -> option option option .
+
+    $end            reduce using rule 2 (options -> option option option .)
+
+WARNING: 
+WARNING: Conflicts:
+WARNING: 
+WARNING: shift/reduce conflict for ASPECT_RATIO_OP in state 4 resolved as shift
+WARNING: shift/reduce conflict for CORE_UTILIZATION_OP in state 4 resolved as shift
+WARNING: shift/reduce conflict for SITE_WIDTH_OP in state 4 resolved as shift
+WARNING: shift/reduce conflict for ROW_HEIGHT_OP in state 4 resolved as shift
+WARNING: shift/reduce conflict for ASPECT_RATIO_OP in state 6 resolved as shift
+WARNING: shift/reduce conflict for CORE_UTILIZATION_OP in state 6 resolved as shift
+WARNING: shift/reduce conflict for SITE_WIDTH_OP in state 6 resolved as shift
+WARNING: shift/reduce conflict for ROW_HEIGHT_OP in state 6 resolved as shift
