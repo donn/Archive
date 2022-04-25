@@ -12,12 +12,6 @@ def pox
     run "PYTHONPATH=#{ENV["PWD"]} /home/mininet/pox/pox.py pox_controller"
 end
 
-def sim_with_pox
-    puts "ALERT: This is broken due to subtle API breaks between Mininet and Pox"
-    puts "Run both separately in two terminals: ./run pox, THEN ./run sim."
-    run "PYTHONPATH=#{ENV["PWD"]} python3 ./broken-together.py with-pox"
-end
-
 def add_ip_flow(switch, src, src_port, dst, dst_port, action, protocol, priority=1, opts=nil)
     options = []
 
