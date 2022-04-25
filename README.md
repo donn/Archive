@@ -1,5 +1,5 @@
 # Archive
-These are minor projects/useful files that are no longer under any form of active maintenance worthy of a gist. They are mostly here for reference or if a need to reuse some of the code ever arises.
+These are school projects/useful files that are no longer under any form of active maintenance worthy of a gist. They are mostly here for reference or if a need to reuse some of the code ever arises.
 
 # License
 Unless explicitly mentioned otherwise, all code is under the Unlicense (Check 'UNLICENSE').

@@ -24,8 +24,3 @@ Please use Bash on Ubuntu on Windows 10. Or Clang for Windows, if you figure how
 On any platform, install ruby and clang using your favorite package manager (gcc/msvc not tested), then write the following into your terminal emulator.
 
     gem install open4
-
-# Licensing Notice
-As the professor provided a portion of the code only for the express purpose of this project, we cannot control the licensing.
-
-Thus, you may use the code for educational purposes only. Please do not redistribute, and instead just link to this repository.

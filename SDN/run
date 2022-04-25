@@ -1,0 +1,117 @@
+#!/usr/bin/env ruby
+def run(cmd)
+    puts "$ #{cmd}"
+    system cmd
+end
+
+def sim
+    run "mn --switch ovsk --controller remote --custom ./topology.py --topo project_topology"
+end
+
+def pox
+    run "PYTHONPATH=#{ENV["PWD"]} /home/mininet/pox/pox.py pox_controller"
+end
+
+def sim_with_pox
+    puts "ALERT: This is broken due to subtle API breaks between Mininet and Pox"
+    puts "Run both separately in two terminals: ./run pox, THEN ./run sim."
+    run "PYTHONPATH=#{ENV["PWD"]} python3 ./broken-together.py with-pox"
+end
+
+def add_ip_flow(switch, src, src_port, dst, dst_port, action, protocol, priority=1, opts=nil)
+    options = []
+
+    options = opts.clone unless opts.nil?
+    options << protocol unless protocol.nil?
+    options << "nw_src=#{src}" unless src.nil?
+    options << "tp_src=#{src_port}" unless src_port.nil?
+    options << "nw_dst=#{dst}" unless dst.nil?
+    options << "tp_dst=#{dst_port}" unless dst_port.nil?
+
+    options << "idle_timeout=1000"
+    options << "priority=#{priority}"
+
+    options << "actions=#{action}"
+    run "ovs-ofctl add-flow #{switch} #{options.join(",")}"
+end
+
+def allow_all_ip(switch, dst, action, priority=1, opts=nil)
+    for protocol in ["ip", "arp"]
+        add_ip_flow switch, nil, nil, dst, nil, action, protocol, priority, opts
+    end
+end
+
+def custom_communication
+    # S1
+    allow_all_ip "S1", "192.168.60.1", "output:1"
+    allow_all_ip "S1", "192.168.61.0/24", "output:2"
+    allow_all_ip "S1", "192.168.62.0/24", "output:3"
+
+    # S2
+    allow_all_ip "S2", "192.168.60.0/24", "output:1"
+    allow_all_ip "S2", "192.168.61.1", "output:2"
+    allow_all_ip "S2", "192.168.62.0/24", "output:3"
+
+    # S3
+    for peer, action in [["192.168.60.1", "output:1"], ["192.168.61.1", "output:2"]]
+        for protocol in ["arp"]
+            add_ip_flow "S3", "192.168.62.2", nil, peer, nil, action, protocol, 3
+        end
+        for peer_port in [22, 80]
+            add_ip_flow "S3", "192.168.62.2", nil, peer, peer_port, action, "tcp", 3
+        end
+    end
+
+    for protocol in ["arp", "ip"]
+        add_ip_flow "S3", "192.168.62.2", nil, nil, nil, "drop", protocol, 2
+    end
+
+    allow_all_ip "S3", "192.168.60.0/24", "output:1"
+    allow_all_ip "S3", "192.168.61.0/24", "output:2"
+    allow_all_ip "S3", "192.168.62.1", "output:4"
+    allow_all_ip "S3", "192.168.62.2", "output:3"
+end
+
+def full_communication
+    # S1
+    allow_all_ip "S1", "192.168.60.1", "output:1"
+    allow_all_ip "S1", "192.168.61.0/24", "output:2"
+    allow_all_ip "S1", "192.168.62.0/24", "output:3"
+
+    # S2
+    allow_all_ip "S2", "192.168.60.0/24", "output:1"
+    allow_all_ip "S2", "192.168.61.1", "output:2"
+    allow_all_ip "S2", "192.168.62.0/24", "output:3"
+
+    # S3
+    allow_all_ip "S3", "192.168.60.0/24", "output:1"
+    allow_all_ip "S3", "192.168.61.0/24", "output:2"
+    allow_all_ip "S3", "192.168.62.1", "output:4"
+    allow_all_ip "S3", "192.168.62.2", "output:3"
+end
+
+def nuke_flows
+    for switch in ["S1", "S2", "S3"]
+        run "ovs-ofctl del-flows #{switch}"
+    end
+end
+
+def add_flows
+    nuke_flows
+    if ENV["LIMITED_FLOWS"] == "1"
+        custom_communication
+    else
+        full_communication
+    end
+end
+        
+
+if ARGV.count == 2
+
+    eval("#{ARGV[0]}('#{ARGV[1]}')")
+
+elsif ARGV.count == 1
+
+    eval(ARGV[0])
+
+end
