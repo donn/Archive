@@ -51,3 +51,6 @@ You can open a specific virtual host's shell as follows:
 A good demo for this project is to open two terminals: Hosts A and D.
 
 Pinging A from D won't work. But if you invoke `python3 -m http.server 80` on A, and try to `wget` that from B, it should work fine, showing that while ICMP is blocked, TCP/IP on port 80 is fine.
+
+# Useful Docs
+* https://docs.pica8.com/pages/viewpage.action?pageId=3083175

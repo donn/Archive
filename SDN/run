@@ -4,12 +4,21 @@ def run(cmd)
     system cmd
 end
 
+def ex(cmd)
+    puts "% #{cmd}"
+    exec cmd
+end
+
 def sim
-    run "mn --switch ovsk --controller remote --custom ./topology.py --topo project_topology"
+    ex "mn --switch ovsk --controller remote --custom ./topology.py --topo project_topology"
 end
 
 def pox
     run "PYTHONPATH=#{ENV["PWD"]} /home/mininet/pox/pox.py pox_controller"
+end
+
+def firewall
+    run "PYTHONPATH=#{ENV["PWD"]} /home/mininet/pox/pox.py learning_controller"
 end
 
 def add_ip_flow(switch, src, src_port, dst, dst_port, action, protocol, priority=1, opts=nil)
