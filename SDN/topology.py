@@ -39,4 +39,30 @@ class ProjectTopology(Topo):
         self.addLink(node1=s3, port1=3, node2=d)
 
 
-topos: Dict[str, Callable] = {"project_topology": ProjectTopology}
+class RouterExerciseTopology(Topo):
+    def build(self):
+        ih1 = "10.1.0.100/24"
+        eh1 = "10:00:00:00:00:10"
+        ih2 = "10.2.0.100/24"
+        eh2 = "10:00:00:00:00:20"
+        ih3 = "10.3.0.100/24"
+        eh3 = "10:00:00:00:00:30"
+
+        # Hosts
+        h1 = self.addHost("h1", ip=ih1, mac=eh1, defaultRoute="via 10.1.0.1")
+        h2 = self.addHost("h2", ip=ih2, mac=eh2, defaultRoute="via 10.2.0.1")
+        h3 = self.addHost("h3", ip=ih3, mac=eh3, defaultRoute="via 10.3.0.1")
+
+        # Switches
+        s1 = self.addSwitch("s1", mac="10:00:00:00:00:42")
+
+        # Links
+        self.addLink(node1=s1, port1=1, node2=h1)
+        self.addLink(node1=s1, port1=2, node2=h2)
+        self.addLink(node1=s1, port1=3, node2=h3)
+
+
+topos: Dict[str, Callable] = {
+    "project_topology": ProjectTopology,
+    "router_exercise_topology": RouterExerciseTopology,
+}

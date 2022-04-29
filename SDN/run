@@ -13,12 +13,16 @@ def sim
     ex "mn --switch ovsk --controller remote --custom ./topology.py --topo project_topology"
 end
 
+def sim_re
+    ex "mn --switch ovsk --controller remote --custom ./topology.py --topo router_exercise_topology"
+end
+
 def pox
     run "PYTHONPATH=#{ENV["PWD"]} /home/mininet/pox/pox.py pox_controller"
 end
 
-def firewall
-    run "PYTHONPATH=#{ENV["PWD"]} /home/mininet/pox/pox.py learning_controller"
+def pox_re
+    run "PYTHONPATH=#{ENV["PWD"]} /home/mininet/pox/pox.py --verbose re_controller"
 end
 
 def add_ip_flow(switch, src, src_port, dst, dst_port, action, protocol, priority=1, opts=nil)

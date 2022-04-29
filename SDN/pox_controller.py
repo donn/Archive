@@ -30,16 +30,16 @@ def on_packet(event):
             ]:
                 for protocol in [Protocol.arp]:
                     messages += add_ip_flow(
-                        "192.168.62.2", None, peer, None, action, protocol, 3
+                        "192.168.62.2", None, peer, None, [action], protocol, 3
                     )
                 for peer_port in [22, 80]:
                     messages += add_ip_flow(
-                        "192.168.62.2", None, peer, peer_port, action, Protocol.tcp, 3
+                        "192.168.62.2", None, peer, peer_port, [action], Protocol.tcp, 3
                     )
 
             for protocol in [Protocol.arp, Protocol.ip]:
                 messages += add_ip_flow(
-                    "192.168.62.2", None, None, None, Action.drop(), protocol, 2
+                    "192.168.62.2", None, None, None, [], protocol, 2
                 )
 
         messages += allow_all_ip("192.168.60.0/24", Action.fwd(1))
